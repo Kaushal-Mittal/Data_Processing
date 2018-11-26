@@ -5,4 +5,5 @@
 int main(void){
     Data a;
     a.readInput();
+    return 0;
 }

@@ -8,9 +8,9 @@ using namespace std;
     Data::Data(){}
 
     Data::~Data(){}
-    
+
     void Data::readInput(){
-        ifstream dataFile("./../data/AirQualityUCI_mod.xlsx");
+        ifstream dataFile("../data/AirQualityUCI.csv");
         string line;
         getline(dataFile,line);
         cout << line;

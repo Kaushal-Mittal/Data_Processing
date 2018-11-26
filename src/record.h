@@ -8,6 +8,6 @@ class Record{
         vector <int> feature;
     public:
         
-}
+};
 
 #endif

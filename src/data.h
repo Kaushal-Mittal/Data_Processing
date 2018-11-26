@@ -12,6 +12,6 @@ class Data{
         Data();
         ~Data();
         void readInput();   
-}
+};
 
 #endif
