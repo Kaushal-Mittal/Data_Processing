@@ -5,7 +5,7 @@ class Matrix{
     private:
 
     public:
-        
-}
+
+};
 
 #endif
