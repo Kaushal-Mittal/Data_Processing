@@ -15,6 +15,7 @@ class Record{
         Record(string s, int n);
         Record(Record &rec);
         ~Record();
+        vector<int> getFeatureVector();
         
 };
 

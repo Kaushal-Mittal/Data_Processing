@@ -2,10 +2,8 @@
 #define MATRIX_H_
 
 class Matrix{
-    private:
-
     public:
-
+        virtual void populateMatrix();
 };
 
 #endif
