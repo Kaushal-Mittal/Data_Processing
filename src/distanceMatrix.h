@@ -17,6 +17,8 @@ class DistanceMatrix{
         DistanceMatrix();
         ~DistanceMatrix();
         void populateMatrix();
+        static double euclideanDistance(vector<double>,vector<double>);
+        static vector<double> normalize(vector<double>);
         vector<double> averageRecord(Data);
         friend std::ostream& operator<< (std::ostream &, DistanceMatrix &);
 

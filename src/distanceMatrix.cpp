@@ -2,6 +2,7 @@
 #include "record.h"
 #include "data.h"
 #include "vector"
+#include "math.h"
 
 //empty constructor
 DistanceMatrix::DistanceMatrix(){}
@@ -25,6 +26,24 @@ vector<double> DistanceMatrix::averageRecord(Data dataObj){
     return a;
 }
 
+double DistanceMatrix::euclideanDistance(vector<double>v1,vector<double>v2){
+    if(v1.size() == v2.size()){
+        double len = v1.size();
+        double sum = 0.0;
+        for(int i=0;i<len;i++){
+            sum = sum + pow((v1[i]-v2[i]),2);
+        }
+        return pow(sum,0.5);
+    }
+}
+
+vector<double> DistanceMatrix::normalize(vector<double> v1){
+    int size = v1.size();
+    vector<double> out(size);
+    
+
+}
+
 void DistanceMatrix::populateMatrix(){
         cout << "shit !!" << endl;
 }
@@ -33,4 +52,5 @@ std::ostream& operator<<(std::ostream& os, DistanceMatrix& mat) {
     os << "LOLOLOL";
     os << "\n";
 }
+
 
