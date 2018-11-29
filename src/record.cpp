@@ -20,6 +20,7 @@ Record::Record(string s, int N, int n){
     while(getline(ss, s_temp,',')){
         if(count < n) stringVector.push_back(s_temp);
         else featureVector.push_back(stod(s_temp));
+        count++;
     }
 }
 
@@ -32,10 +33,14 @@ Record::Record(string s){
     }
 }
 
-Record::Record(Record &rec){
+// Record::Record(Record &rec){
 
-}
+// }
 
 Record::~Record(){
 
+}
+
+vector<double> Record::getFeatureVector(){
+    return featureVector;
 }

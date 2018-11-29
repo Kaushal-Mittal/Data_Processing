@@ -18,10 +18,10 @@ class Record{
         Record(); //empty constructor
         Record(string s);                       
         Record(string s, int N, int n);  //constructor1
-        Record(Record &rec);        //copy constructor
+        // Record(Record &rec);        //copy constructor
         ~Record();                  //destructor
 
-        vector<int> getFeatureVector();     //a method to return the feature vector of a record
+        vector<double> getFeatureVector();     //a method to return the feature vector of a record
 
         //returns size of the record
         int getSize(){

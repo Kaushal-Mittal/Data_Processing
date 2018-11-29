@@ -17,7 +17,6 @@ class Data{
     public:
         Data();                     //empty constructor
         ~Data();                    //destructor
-        Record getRecord(int);      //returns a record at given index in the vector
         vector<Record> getData();   //returns a vector containing all the records
         void readInput(int N, int n);           //a method to read input from file
 
@@ -33,6 +32,11 @@ class Data{
         int getFeatureSize(){
             return N-n;
         }
+
+        //returns a record at given index in the vector
+        Record getRecord(int n){
+            return data[n];
+        }     
 };
 
 #endif
