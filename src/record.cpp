@@ -9,16 +9,15 @@ using namespace std;
 
 Record::Record(){}
 
-Record::Record(string s, int N, int n){
-    
-    vector<string> temp;
-    vector<int> temp2;
+Record::Record(string s, int NN, int nn){
+    N = NN;
+    n = nn;
     string s_temp;
     int count = 0;    
     istringstream ss(s);
 
     while(getline(ss, s_temp,',')){
-        if(count < n) stringVector.push_back(s_temp);
+        if(count < nn) stringVector.push_back(s_temp);
         else featureVector.push_back(stod(s_temp));
         count++;
     }

@@ -12,7 +12,9 @@ using namespace std;
 
     Data::~Data(){}
 
-    void Data::readInput(int N, int n){
+    void Data::readInput(int NN, int nn){
+        n = nn;
+        N = NN;
         ifstream dataFile("../data/AirQualityUCI_mod_2.csv");
         string line;
         string temp;
@@ -21,8 +23,11 @@ using namespace std;
         getline(dataFile,line);
         Record some(line);
         params = some;
+        int counter = 0;
         while(getline(dataFile,line)){
-            Record somerecord(line, N, n);
+            Record somerecord(line, NN, nn);
             data.push_back(somerecord);
+            counter++;
         }
+        size = counter;
     }

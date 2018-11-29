@@ -7,7 +7,7 @@
 #include "data.h"
 
 using namespace std;
-class DistanceMatrix : public Matrix{
+class DistanceMatrix{
 
     private:
         vector<int> feature;
@@ -16,7 +16,9 @@ class DistanceMatrix : public Matrix{
     public:
         DistanceMatrix();
         ~DistanceMatrix();
+        void populateMatrix();
         vector<double> averageRecord(Data);
+        friend std::ostream& operator<< (std::ostream &, DistanceMatrix &);
 
 
 };

@@ -1,13 +1,17 @@
-#include "iostream"
+#include <iostream>
 #include "data.h"
 #include "record.h"
+#include "distanceMatrix.h"
+#include "utilities.h"
+using namespace std;
 
-// using namespace std;
 
 int main(void){
     Data a;
+    vector<double> l(2);
+    l = {2,3};
     a.readInput(17,0);
-    cout << a.getRecord(0).getFeatureVector()[4] << endl;
-    // cout << a << endl;
+    DistanceMatrix b;
+    cout << b.averageRecord(a);
     return 0;
 }
