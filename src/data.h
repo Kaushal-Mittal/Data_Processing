@@ -18,7 +18,7 @@ class Data{
         ~Data();                    //destructor
         Record getRecord(int);      //returns a record at given index in the vector
         vector<Record> getData();   //returns a vector containing all the records
-        void readInput();           //a method to read input from file
+        void readInput(int N, int n);           //a method to read input from file
 
         //returns total number of records in data
         int getSize(){
