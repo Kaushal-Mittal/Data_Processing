@@ -40,8 +40,23 @@ double DistanceMatrix::euclideanDistance(vector<double>v1,vector<double>v2){
 vector<double> DistanceMatrix::normalize(vector<double> v1){
     int size = v1.size();
     vector<double> out(size);
-    
+    double max,min;
+    max = v1[0];
+    min = v1[0];
+    for(int i =0;i<size;i++){
+        if(v1[i] > max){
+            max = v1[i];
+        }
+        if(v1[i] < min){
+            min = v1[i];
+        }
+    }
 
+    for(int i =0;i<size;i++){
+        out[i] = (v1[i]-min)/(max-min);
+    }
+
+    return out;
 }
 
 void DistanceMatrix::populateMatrix(){
