@@ -11,6 +11,7 @@ class Data{
     private:
         vector<double> feature;
         vector<Record> data;
+        Record params;
         int N,n,size;
 
     public:
@@ -32,7 +33,6 @@ class Data{
         int getFeatureSize(){
             return N-n;
         }
-
 };
 
 #endif

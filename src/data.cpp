@@ -16,6 +16,11 @@ using namespace std;
         ifstream dataFile("../data/AirQualityUCI_mod_2.csv");
         string line;
         string temp;
+        // getline(dataFile,line);
+        // istringstream ss(line);
+        getline(dataFile,line);
+        Record some(line);
+        params = some;
         while(getline(dataFile,line)){
             Record somerecord(line, N, n);
             data.push_back(somerecord);
