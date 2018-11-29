@@ -3,18 +3,36 @@
 
 #include <vector>
 #include "record.h"
+
 using namespace std;
+
 class Data{
 
     private:
-        vector<int> feature;
+        vector<double> feature;
         vector<Record> data;
+        int N,n,size;
+
     public:
-        Data();
-        ~Data();
-        Record getRecord(int);
-        vector<Record> getData();   
-        void readInput();   
+        Data();                     //empty constructor
+        ~Data();                    //destructor
+        Record getRecord(int);      //returns a record at given index in the vector
+        vector<Record> getData();   //returns a vector containing all the records
+        void readInput();           //a method to read input from file
+
+        //returns total number of records in data
+        int getSize(){
+            return size;
+        }
+
+        int getRecordSize(){
+            return N;
+        }
+
+        int getFeatureSize(){
+            return N-n;
+        }
+
 };
 
 #endif
