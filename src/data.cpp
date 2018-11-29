@@ -2,6 +2,9 @@
 #include "record.h"
 #include <iostream>
 #include <fstream>
+#include <sstream>
+#include "string"
+#include "vector"
 
 using namespace std;
 
@@ -10,7 +13,13 @@ using namespace std;
     Data::~Data(){}
 
     void Data::readInput(){
-        ifstream dataFile("../data/AirQualityUCI.csv");
+        ifstream dataFile("../data/AirQualityUCI_mod_2.csv");
         string line;
-        getline(dataFile,line);
+        string temp;
+        // getline(dataFile,line);
+        // istringstream ss(line);
+        while(getline(dataFile,line)){
+            Record somerecord(line);
+            data.push_back(somerecord);
+        }
     }
