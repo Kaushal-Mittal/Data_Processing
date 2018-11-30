@@ -3,6 +3,7 @@
 #include "data.h"
 #include "vector"
 #include "math.h"
+#include "algorithm"
 
 //empty constructor
 DistanceMatrix::DistanceMatrix(){}
@@ -23,6 +24,10 @@ vector<double> DistanceMatrix::averageRecord(Data dataObj){
     }
     vector<double> a(arr,arr + sizeof(arr)/sizeof(arr[0]));
     // cout << "yoloy" << a << "yolo" << endl; 
+    for(int i =0;i<size;i++){
+        double dist = DistanceMatrix::euclideanDistance(dataObj.getRecord(i).getFeatureVector(),a);
+        dataObj.getRecord(i).setDistance(dist);
+    }
     return a;
 }
 
@@ -51,12 +56,22 @@ vector<double> DistanceMatrix::normalize(vector<double> v1){
             min = v1[i];
         }
     }
-
     for(int i =0;i<size;i++){
         out[i] = (v1[i]-min)/(max-min);
     }
-
     return out;
+}
+
+bool DistanceMatrix::distanceComparator(const Record &r1,const Record& r2){
+    double a1,a2;
+    a1 = r1.getDistance();
+    a2 = r2.getDistance();
+    return a1 > a2;
+}
+
+void DistanceMatrix::sortRecords(Data obj){
+    // cout << "lol";
+    sort(obj.getData().begin(),obj.getData().end(), DistanceMatrix::distanceComparator);
 }
 
 void DistanceMatrix::populateMatrix(){

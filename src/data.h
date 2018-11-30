@@ -17,7 +17,6 @@ class Data{
     public:
         Data();                     //empty constructor
         ~Data();                    //destructor
-        vector<Record> getData();   //returns a vector containing all the records
         void readInput(int N, int n);           //a method to read input from file
 
         //returns total number of records in data
@@ -37,6 +36,11 @@ class Data{
         Record getRecord(int n){
             return data[n];
         }     
+
+        //returns a vector containing all the records
+        vector<Record> getData(){
+            return data;
+        }
 };
 
 #endif

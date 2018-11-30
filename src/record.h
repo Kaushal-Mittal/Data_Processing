@@ -13,6 +13,7 @@ class Record{
         vector <string> param;           //contains all headings of tables
         vector <string> stringVector;    //contains all string values in a row
         int N,n;
+        double distance;
 
     public:
         Record(); //empty constructor
@@ -31,6 +32,15 @@ class Record{
         int getFeatureSize(){
             return N-n;
         }
+
+        void setDistance(double d){
+            distance = d;
+        }
+
+        double getDistance(){
+            return distance;
+        }
+        friend std::ostream& operator<< (std::ostream &, Record &);
         
 };
 

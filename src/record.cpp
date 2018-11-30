@@ -2,6 +2,7 @@
 #include <vector>
 #include "record.h"
 #include <sstream>
+#include "utilities.h"
 
 // #include <boost/algorithm/string.hpp>
 
@@ -42,4 +43,8 @@ Record::~Record(){
 
 vector<double> Record::getFeatureVector(){
     return featureVector;
+}
+
+std::ostream& operator<<(std::ostream& os, Record& rc) {
+    cout << rc.getFeatureVector();
 }

@@ -10,7 +10,7 @@ using namespace std;
 class DistanceMatrix{
 
     private:
-        vector<int> feature;
+        vector<double> averageFeature;
         vector<vector<double>> matrix;
         
     public:
@@ -20,6 +20,8 @@ class DistanceMatrix{
         static double euclideanDistance(vector<double>,vector<double>);
         static vector<double> normalize(vector<double>);
         vector<double> averageRecord(Data);
+        static bool distanceComparator(const Record &,const Record&);
+        void sortRecords(Data);
         friend std::ostream& operator<< (std::ostream &, DistanceMatrix &);
 
 
