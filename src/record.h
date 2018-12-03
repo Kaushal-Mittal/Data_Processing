@@ -7,19 +7,18 @@
 using namespace std;
 
 class Record{
-
     private:
         vector <double> featureVector;      //contains all integral values in a row
         vector <string> param;           //contains all headings of tables
         vector <string> stringVector;    //contains all string values in a row
         int N,n;
-        double distance;
+        double distance = 0.0;
 
     public:
         Record(); //empty constructor
         Record(string s);                       
         Record(string s, int N, int n);  //constructor1
-        // Record(Record &rec);        //copy constructor
+        Record(const Record &rec);        //copy constructor
         ~Record();                  //destructor
 
         vector<double> getFeatureVector();     //a method to return the feature vector of a record
@@ -37,9 +36,10 @@ class Record{
             distance = d;
         }
 
-        double getDistance(){
+        double getDistance() const{
             return distance;
         }
+
         friend std::ostream& operator<< (std::ostream &, Record &);
         
 };

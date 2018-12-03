@@ -21,7 +21,7 @@ class Data{
 
         //returns total number of records in data
         int getSize(){
-            return size;
+            return data.size();
         }
 
         int getRecordSize(){

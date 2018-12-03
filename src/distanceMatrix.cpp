@@ -3,6 +3,7 @@
 #include "data.h"
 #include "vector"
 #include "math.h"
+#include "utilities.h"
 #include "algorithm"
 
 //empty constructor
@@ -66,7 +67,7 @@ bool DistanceMatrix::distanceComparator(const Record &r1,const Record& r2){
     double a1,a2;
     a1 = r1.getDistance();
     a2 = r2.getDistance();
-    return a1 > a2;
+    return a1 < a2;
 }
 
 void DistanceMatrix::sortRecords(Data obj){
@@ -74,12 +75,27 @@ void DistanceMatrix::sortRecords(Data obj){
     sort(obj.getData().begin(),obj.getData().end(), DistanceMatrix::distanceComparator);
 }
 
-void DistanceMatrix::populateMatrix(){
-        cout << "shit !!" << endl;
+void DistanceMatrix::populateMatrix(Data data){
+    int sz = data.getSize();
+    matrix.resize(sz);
+    for(int i =0;i<sz;i++){
+        matrix[i].resize(sz);
+        for(int j=0;j<i;j++){
+            double m = DistanceMatrix::euclideanDistance(data.getRecord(i).getFeatureVector(),data.getRecord(j).getFeatureVector());
+            matrix[i][j] = m;
+            matrix[j][i] = m;
+        }
+    }
 }
 
+
 std::ostream& operator<<(std::ostream& os, DistanceMatrix& mat) {
-    os << "LOLOLOL";
+    for(int i =0;i<mat.matrix.size();i++){
+        for(int j=0;j<mat.matrix.size();j++){
+            os << mat.matrix[i][j] << " ";
+        }
+        os << "\n";
+    }
     os << "\n";
 }
 

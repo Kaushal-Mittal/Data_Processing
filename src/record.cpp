@@ -25,7 +25,6 @@ Record::Record(string s, int NN, int nn){
 }
 
 Record::Record(string s){
-    
     istringstream ss(s);
     string temp;
     while(getline(ss, temp,',')){
@@ -33,9 +32,14 @@ Record::Record(string s){
     }
 }
 
-// Record::Record(Record &rec){
-
-// }
+Record::Record(const Record &rec){
+    featureVector = rec.featureVector;
+    N = rec.N;
+    n = rec.n;
+    stringVector = rec.stringVector;
+    param = rec.param;
+    distance = rec.distance;
+}
 
 Record::~Record(){
 

@@ -16,7 +16,7 @@ class DistanceMatrix{
     public:
         DistanceMatrix();
         ~DistanceMatrix();
-        void populateMatrix();
+        void populateMatrix(Data);
         static double euclideanDistance(vector<double>,vector<double>);
         static vector<double> normalize(vector<double>);
         vector<double> averageRecord(Data);
