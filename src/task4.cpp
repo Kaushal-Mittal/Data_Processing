@@ -3,7 +3,7 @@
 #include <numeric>
 #include <map>
 #include <bits/stdc++.h> 
-
+#include "distanceMatrix.h"
 #include "matrix.h"
 #include "data.h"
 #include "record.h"
@@ -23,9 +23,9 @@ double  task4::generate_covariance(vector<double> v1, vector<double> v2){
     double covariance;
     
     // finding variance
-        double temp = 0;
+    double temp = 0;
     for(int i= 0; i< v1.size(); i++) {
-        temp += ((v1[i] - average1)*(v2[i] - average2));
+        temp = ((v1[i] - average1)*(v2[i] - average2));
     }
         covariance = temp/(v1.size()-1);
 
@@ -43,6 +43,7 @@ void task4::generate_covariance_matrix(Data dataobj){
 
     // typedef pair<int, double> pair<int, double>;
     vector<pair<int, double> > variances;
+
     
     for(size_t i = 0; i < dataobj.getFeatureSize(); i++){
         int index = i;
@@ -56,6 +57,23 @@ void task4::generate_covariance_matrix(Data dataobj){
         v.clear();
     }
 
+// /////////////////////////////////////////////////////////
+
+    int max = variances[0].second;
+    int min = variances[0].second;
+
+    for(int i =0;i<variances.size();i++){
+        if(variances[i].second > max){
+            max = variances[i].second;
+        }
+        if(variances[i].second < min){
+            min = variances[i].second;
+        }
+    }
+    for(int i =0;i<variances.size();i++){
+        variances[i].second = (variances[i].second-min)/(max-min);
+    }
+// /////////////////////////////////////////////////////////
 
 
     sort(variances.begin(), variances.end(), func);
