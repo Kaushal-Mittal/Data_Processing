@@ -33,12 +33,12 @@ class Data{
         }
 
         //returns a record at given index in the vector
-        Record getRecord(int n){
+        Record& getRecord(int n){
             return data[n];
         }     
 
         //returns a vector containing all the records
-        vector<Record> getData(){
+        vector<Record>& getData(){
             return data;
         }
 

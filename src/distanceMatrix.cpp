@@ -63,20 +63,36 @@ vector<double> DistanceMatrix::normalize(vector<double> v1){
     return out;
 }
 
-bool DistanceMatrix::distanceComparator(const Record &r1,const Record& r2){
-    double a1,a2;
-    a1 = r1.getDistance();
-    a2 = r2.getDistance();
-    return a1 < a2;
-}
+// bool DistanceMatrix::distanceComparator(const Record &r1,const Record& r2){
+//     double a1,a2;
+//     a1 = r1.getDistance();
+//     a2 = r2.getDistance();
+//     return a1 < a2;
+// }
 
-void DistanceMatrix::sortRecords(Data obj){
+void DistanceMatrix::sortRecords(Data& obj){
     // cout << "lol";
-    sort(obj.getData().begin(),obj.getData().end(), DistanceMatrix::distanceComparator);
+    // vector<Record> vec = obj.getData();
+    sort(obj.getData().begin(), obj.getData().end(),
+          [](const Record& a,const Record& b) {
+    return a.getDistance() < b.getDistance();
+});
+    // cout << "distance in compute distance " << obj.getRecord(0).getDistance() << endl;
+    // sort(obj.getData().begin(),obj.getData().end(), DistanceMatrix::distanceComparator);
 }
 
-void DistanceMatrix::populateMatrix(Data data){
-    int sz = data.getSize();
+void DistanceMatrix::computeDistances(Data& obj){
+    vector<double> avg = averageRecord(obj);
+    int size = obj.getSize();
+    for(int i =0;i<size;i++){
+        obj.getRecord(i).setDistance(DistanceMatrix::euclideanDistance(obj.getRecord(i).getFeatureVector(),avg));
+    }
+}
+
+
+void DistanceMatrix::populateMatrix(Data& data){
+    // int sz = data.getSize();
+    int sz = 100;
     matrix.resize(sz);
     for(int i =0;i<sz;i++){
         matrix[i].resize(sz);
@@ -84,6 +100,9 @@ void DistanceMatrix::populateMatrix(Data data){
             double m = DistanceMatrix::euclideanDistance(data.getRecord(i).getFeatureVector(),data.getRecord(j).getFeatureVector());
             matrix[i][j] = m;
             matrix[j][i] = m;
+            cout << m << " i " << i << " j " << j << endl;
+            // if(i==0)
+            // cout << matrix[0][1] << " ";
         }
     }
 }

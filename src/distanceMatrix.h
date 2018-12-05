@@ -16,12 +16,13 @@ class DistanceMatrix{
     public:
         DistanceMatrix();
         ~DistanceMatrix();
-        void populateMatrix(Data);
+        void populateMatrix(Data&);
         static double euclideanDistance(vector<double>,vector<double>);
         static vector<double> normalize(vector<double>);
         vector<double> averageRecord(Data);
+        void computeDistances(Data&);
         static bool distanceComparator(const Record &,const Record&);
-        void sortRecords(Data);
+        void sortRecords(Data&);
         friend std::ostream& operator<< (std::ostream &, DistanceMatrix &);
 
 
