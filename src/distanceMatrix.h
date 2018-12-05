@@ -25,6 +25,10 @@ class DistanceMatrix{
         void sortRecords(Data&);
         friend std::ostream& operator<< (std::ostream &, DistanceMatrix &);
 
+        vector<vector<double>>& getMatrix(){
+            return matrix;
+        }
+
 
 };
 

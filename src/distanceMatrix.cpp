@@ -91,8 +91,8 @@ void DistanceMatrix::computeDistances(Data& obj){
 
 
 void DistanceMatrix::populateMatrix(Data& data){
-    // int sz = data.getSize();
-    int sz = 100;
+    int sz = data.getSize();
+    // int sz = 3;
     matrix.resize(sz);
     for(int i =0;i<sz;i++){
         matrix[i].resize(sz);
@@ -100,7 +100,7 @@ void DistanceMatrix::populateMatrix(Data& data){
             double m = DistanceMatrix::euclideanDistance(data.getRecord(i).getFeatureVector(),data.getRecord(j).getFeatureVector());
             matrix[i][j] = m;
             matrix[j][i] = m;
-            cout << m << " i " << i << " j " << j << endl;
+            // cout << m << " i " << i << " j " << j << endl;
             // if(i==0)
             // cout << matrix[0][1] << " ";
         }
