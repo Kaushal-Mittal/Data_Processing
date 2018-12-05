@@ -16,29 +16,15 @@ bool distanceComparator(Record &r1,Record& r2){
 
 int main(void){
     Data a;
-    // vector<double> l(2);
-    // vector<double> m(10);
-    // l = {0,0,0};
-    // m = {6,8,10,4,5,6,7,8,9,1};
-    ofstream outputFile("output.txt");
+    ofstream outputFile("out.txt");
     a.readInput(17,0);
-    // cout << "lol";
-    // cout << a.getRecord(0).getFeatureVector();
     DistanceMatrix b;
-    // cout << a.getRecord(0).getFeatureVector() << endl;;
-    // b.sortRecords(a);
-    // sort(a.getData().begin(),a.getData().end(),distanceComparator);
+    b.computeDistances(a);
+    cout << a.getRecord(0).getFeatureVector() << endl;
+    b.sortRecords(a);
+    cout << a.getRecord(0).getFeatureVector() << endl;
     b.populateMatrix(a);
-    // cout << b;
-    // cout << "lol";
     outputFile << b;
     outputFile.close(); 
-    // cout << DistanceMatrix::normalize(m) << endl;
-    // cout << l << endl;
-    // l[0] = 100;
-    // cout << l << endl;
-
-    // DistanceMatrix b;
-    // cout << b.averageRecord(a);
     return 0;
 }
