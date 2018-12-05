@@ -86,11 +86,11 @@ void task4::generate_covariance_matrix(Data dataobj){
 
     vector<vector<double> > covar_matrix;
     
-    cout << permutation.size() << endl;
+    // cout << permutation.size() << endl;
     
     for(int i = 0; i < permutation.size(); i++){
         // vector<double> temp1;
-        cout<<endl << i<< "---" ;
+        // cout<<endl << i<< "---" ;
         for(int j = 0; j < permutation.size(); j++){
             
             double temp2;
@@ -99,29 +99,10 @@ void task4::generate_covariance_matrix(Data dataobj){
             // vector<double> c2 = dataobj.get_column(permutation[j].second);
 
             temp2 = generate_covariance(dataobj.get_column(permutation[i].second),  dataobj.get_column(permutation[j].second));
-
-            // c1.clear();
-            // c2.clear();
-
-            // temp1.push_back(temp2);
             cout << temp2 << " ";
         }
-        // covar_matrix.push_back(temp1);
-        
+       cout << endl; 
     }
-    cout << "lol";
-
-
-    
-
-    // int a = permutation.size();
-    // for(size_t i = 0; i < a; i++)
-    // {
-    //     cout << i << " :::"<<permutation[i] <<endl ;
-    // } 
-
-
-
 }
 
 

@@ -63,10 +63,10 @@ int main(void){
 
     DistanceMatrix b;
     b.computeDistances(a);
-    cout << a.getRecord(0).getFeatureVector() << endl;
+    // cout << a.getRecord(0).getFeatureVector() << endl;
     b.sortRecords(a);
-    cout << a.getRecord(0).getFeatureVector() << endl;
-    b.populateMatrix(a);
+    // cout << a.getRecord(0).getFeatureVector() << endl;
+    // b.populateMatrix(a);
     // cout << b;
     // cout << b.getMatrix().size() << "size !!\n";
 
