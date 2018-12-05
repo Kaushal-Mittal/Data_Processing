@@ -59,7 +59,17 @@ int main(void){
     a.readInput(17,0);
     
     task4 t4;
-    t4.generate_covariance_matrix(a);
+    vector<vector<double> > cv_m = t4.generate_covariance_matrix(a);
+
+    
+    for(size_t i = 0; i < cv_m.size(); i++){
+        for(size_t j = 0; j < cv_m[i].size(); j++){
+            cout << cv_m[i][j] << " " ;
+        }
+        cout << endl;
+    }
+    
+
 
     DistanceMatrix b;
     b.computeDistances(a);

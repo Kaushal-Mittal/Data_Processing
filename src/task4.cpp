@@ -36,8 +36,8 @@ bool func(pair<int, double> p1, pair<int, double> p2){
     return p1.second < p2.second ;
 }
 
-// vector<vector<double> > task4::generate_covariance_matrix(Data dataobj){
-void task4::generate_covariance_matrix(Data dataobj){
+vector<vector<double> > task4::generate_covariance_matrix(Data dataobj){
+// void task4::generate_covariance_matrix(Data dataobj){
 
     int n = dataobj.getSize();
 
@@ -84,7 +84,9 @@ void task4::generate_covariance_matrix(Data dataobj){
         permutation.push_back(pair<int, int>(i, variances[i].first));
     }
 
-    vector<vector<double> > covar_matrix;
+    n = permutation.size();
+    vector<double> t(n, 0);
+    vector<vector<double> > covar_matrix(n, t);
     
     // cout << permutation.size() << endl;
     
@@ -99,10 +101,12 @@ void task4::generate_covariance_matrix(Data dataobj){
             // vector<double> c2 = dataobj.get_column(permutation[j].second);
 
             temp2 = generate_covariance(dataobj.get_column(permutation[i].second),  dataobj.get_column(permutation[j].second));
-            cout << temp2 << " ";
+            // cout << temp2 << " ";
+            covar_matrix[i][j] = (temp2);
         }
-       cout << endl; 
     }
+
+    return covar_matrix;
 }
 
 

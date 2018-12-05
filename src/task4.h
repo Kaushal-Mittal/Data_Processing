@@ -17,8 +17,8 @@ class task4{
         task4();
         ~task4();
 
-        // vector<vector<double> > generate_covariance_matrix(Data dataobj);
-        void generate_covariance_matrix(Data dataobj);
+        vector<vector<double> > generate_covariance_matrix(Data dataobj);
+        // void generate_covariance_matrix(Data dataobj);
         double generate_covariance(vector<double> v1, vector<double> v2);
 
 };
