@@ -4,6 +4,7 @@
 #include "record.h"
 #include "distanceMatrix.h"
 #include "utilities.h"
+#include "task4.h"
 #include "vector"
 using namespace std;
 
@@ -50,19 +51,16 @@ vector<double> task_6(vector<vector<double>> matrix)
     return index_list;
    }
 
-bool distanceComparator(Record &r1,Record& r2){
-    double a1,a2;
-    a1 = r1.getDistance();
-    a2 = r2.getDistance();
-    cout << r1 << " " << r2 << "lol\n";
-    return a1 < a2;
-}
 
 int main(void){
     Data a;
     vector<double> ll;
-    ofstream outputFile("out.txt");
+    ofstream outputFile("output.txt");
     a.readInput(17,0);
+    
+    task4 t4;
+    t4.generate_covariance_matrix(a);
+
     DistanceMatrix b;
     b.computeDistances(a);
     cout << a.getRecord(0).getFeatureVector() << endl;
