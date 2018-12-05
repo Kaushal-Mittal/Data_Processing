@@ -12,7 +12,7 @@ class Record{
         vector <string> param;           //contains all headings of tables
         vector <string> stringVector;    //contains all string values in a row
         int N,n;
-        double distance = 0.0;
+        double distance = 0;
 
     public:
         Record(); //empty constructor

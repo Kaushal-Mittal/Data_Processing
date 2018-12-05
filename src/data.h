@@ -9,7 +9,7 @@ using namespace std;
 class Data{
 
     private:
-        vector<double> feature;
+        // vector<double> feature;
         vector<Record> data;
         Record params;
         int N,n,size;
@@ -41,6 +41,10 @@ class Data{
         vector<Record> getData(){
             return data;
         }
+
+        vector<double> get_column(int i);
+
+
 };
 
 #endif

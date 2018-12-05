@@ -14,12 +14,13 @@ Record::Record(string s, int NN, int nn){
     N = NN;
     n = nn;
     string s_temp;
+    char *ptr;
     int count = 0;    
     istringstream ss(s);
 
     while(getline(ss, s_temp,',')){
         if(count < nn) stringVector.push_back(s_temp);
-        else featureVector.push_back(stod(s_temp));
+        else featureVector.push_back(strtod((s_temp).c_str(), &ptr));
         count++;
     }
 }

@@ -31,3 +31,11 @@ using namespace std;
         }
         size = counter;
     }
+
+    vector<double> Data::get_column(int i){
+        vector<double> v;
+        for(size_t j = 0; j < size; j++){   
+            v.push_back(data[j].getFeatureVector()[i]);
+        }
+        return v;
+    }
