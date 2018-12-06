@@ -8,6 +8,9 @@
 #include "data.h"
 #include "record.h"
 #include "task4.h"
+#include "utilities.h"
+#include <math.h> 
+
 
 using namespace std;
 
@@ -54,22 +57,24 @@ vector<vector<double> > task4::generate_covariance_matrix(Data dataobj){
         v.clear();
     }
 
+
+
 // Normalisation
 
-    int max = variances[0].second;
-    int min = variances[0].second;
+int max = variances[0].second;
+int min = variances[0].second;
 
-    for(int i =0;i<variances.size();i++){
-        if(variances[i].second > max){
-            max = variances[i].second;
-        }
-        if(variances[i].second < min){
-            min = variances[i].second;
-        }
+for(int i =0;i<variances.size();i++){
+    if(variances[i].second > max){
+        max = variances[i].second;
     }
-    for(int i =0;i<variances.size();i++){
-        variances[i].second = (variances[i].second-min)/(max-min);
+    if(variances[i].second < min){
+        min = variances[i].second;
     }
+}
+for(int i =0;i<variances.size();i++){
+    variances[i].second = (variances[i].second-min)/(max-min);
+}
 
 //Sort using custom comparator func
     sort(variances.begin(), variances.end(), func);
@@ -89,11 +94,26 @@ vector<vector<double> > task4::generate_covariance_matrix(Data dataobj){
     for(int i = 0; i < permutation.size(); i++){
         for(int j = 0; j < permutation.size(); j++){
 
+            double covar_xy, var_x, var_y;
             double temp2;
-            // vector<double> c1 = dataobj.get_column(permutation[i].second);
-            // vector<double> c2 = dataobj.get_column(permutation[j].second);
-            temp2 = generate_covariance(dataobj.get_column(permutation[i].second),  dataobj.get_column(permutation[j].second));
+
+            int p_i = permutation[i].second;
+            int p_j = permutation[j].second;
+            
+            vector<double> c1 = dataobj.get_column(p_i);
+            vector<double> c2 = dataobj.get_column(p_j);
+
+            // temp2 = generate_covariance(dataobj.get_column(permutation[i].second),  dataobj.get_column(permutation[j].second));
+            covar_xy = generate_covariance(c1, c2);
+            var_x = generate_covariance(c1, c1);
+            var_y = generate_covariance(c2, c2);
+
+            temp2 = covar_xy / sqrt(var_x * var_y);
+
             covar_matrix[i][j] = (temp2);
+            if(i==j){
+                covar_matrix[i][j] = variances[i].second;
+            }
 
         }
     }
