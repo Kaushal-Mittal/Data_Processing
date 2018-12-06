@@ -29,7 +29,7 @@ vector<double> task_6(vector<vector<double>> matrix)
 
    for(int i=0;i<R;i++)
     {
-      int index=0;
+    int index=0;
      double temp=sum[0];
      for(int k=1;k<R;k++)
       {
@@ -49,25 +49,24 @@ vector<double> task_6(vector<vector<double>> matrix)
      index_list.push_back(index);
     }
     return index_list;
-   }
+}
 
 
 int main(void){
     Data a;
     vector<double> ll;
     ofstream outputFile("output.txt");
+
+    // ofstream outputFile("test.csv");
+
+
+
     a.readInput(17,0);
     
     task4 t4;
     vector<vector<double> > cv_m = t4.generate_covariance_matrix(a);
 
     
-    for(size_t i = 0; i < cv_m.size(); i++){
-        for(size_t j = 0; j < cv_m[i].size(); j++){
-            cout << cv_m[i][j] << " " ;
-        }
-        cout << endl;
-    }
     
 
 
@@ -89,6 +88,18 @@ int main(void){
     //         cout<<"("<<ll[i]<<","<<ll[i]<<")";
     //     }
     outputFile << b;
-    outputFile.close(); 
+    outputFile.close();
+
+    ofstream out;
+    out.open("task4.csv");
+
+
+    for(size_t i = 0; i < cv_m.size(); i++){
+        for(size_t j = 0; j < cv_m[i].size(); j++){
+            out << cv_m[i][j] << "," ;
+        }
+        out << endl;
+    }
+
     return 0;
 }
