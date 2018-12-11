@@ -91,8 +91,8 @@ void DistanceMatrix::computeDistances(Data& obj){
 
 
 void DistanceMatrix::populateMatrix(Data& data){
-    int sz = data.getSize();
-    // int sz = 3;
+    // int sz = data.getSize();
+    int sz = 50;
     matrix.resize(sz);
     for(int i =0;i<sz;i++){
         matrix[i].resize(sz);

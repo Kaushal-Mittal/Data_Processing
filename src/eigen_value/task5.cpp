@@ -3,85 +3,81 @@
 
 using namespace std;
 
-task5::task5(int n, int p, vector<vector<double> > a)
+task5::task5(int n, int p, vector<vector<double> > m)
 {
   this->n = n;
   this->p = p;
   for(int i=0;i<n;i++)
   {
-    sqmatrix.push_back(a[i]);
+    sqmatrix.push_back(m[i]);
   }
 }
 
-void task5::eigen_calculator(vector <vector <double> > &eigen_vectors, vector <double> &eigen_values)
+void task5::output(vector <vector <double> > &eigen_vectors, vector <double> &eigen_values)
 {
+  //Power Iteration Algorithm
+  //As given in the reference link!
   for(int loop=0;loop<p;loop++)
   {
-    vector<double> c(n);
-    vector <double> x(n);
-    vector<double> temp(n);
-    double y=0, k=0, double_temp=0;
+    vector <double> x(n), y(n);
+    vector<double> tempArr(n);
+    double temp = 0;
+    double l=0, k=0;
     for(int i=0;i<n;i++)
     {
-      x[i]=1;
+      x[i] = 1;
+      temp+=x[i]*x[i];
     }
+    temp = sqrt(temp);
     for(int i=0;i<n;i++)
     {
-      double_temp+=x[i]*x[i];
-    }
-    double_temp = sqrt(double_temp);
-    for(int i=0;i<n;i++)
-    {
-      x[i]=x[i]/double_temp;
+      x[i]=x[i]/temp;
     }
     do{
-        for(int i=0;i<n;i++)
+      for(int i=0;i<n;i++)
+      {
+        y[i] = x[i];
+      }
+      l = k;
+      k = 0;
+      for(int i=0;i<loop;i++)
+      {
+        for(int j=0;j<n;j++)
         {
-          c[i] = x[i];
+          tempArr[j] = eigen_vectors[i][j];
         }
-        y=k;
-        k = 0;
-        for(int j=0;j<=loop-1;j++)
+        temp=0;
+        for(int j=0;j<n;j++)
         {
-          for(int l=0;l<n;l++)
-          {
-            temp[l] = eigen_vectors[j][l];
-          }
-          double_temp=0;
-          for(int i=0;i<n;i++)
-          {
-            double_temp+= c[i]*temp[i];
-          }
-          for(int i=0;i<n;i++)
-          {
-            temp[i] = temp[i]*double_temp;
-          }
-          for(int i=0;i<n;i++)
-          {
-            c[i] = c[i]-temp[i];
-          }
+          temp += y[j]*tempArr[j];
         }
-        double_temp = 0;
-        for(int i=0;i<n;i++)
+        for(int j=0;j<n;j++)
         {
-            x[i]=0;
-            for (int j=0;j<n;j++)
-            {
-              x[i]+=sqmatrix[i][j]*c[j];
-            }
-            double_temp += x[i]*x[i];
+          tempArr[j] = tempArr[j]*temp;
+          y[j] = y[j]-tempArr[j];
         }
-        k = sqrt(double_temp);
-        for(int i=0;i<n;i++)
-        {
-          x[i]=x[i]/k;
-        }
-      }while (fabs(k-y)>0.00001);
-    if((x[0]<0 && c[0]>0) || (x[0]>0 && c[0]<0))
+      }
+      temp = 0;
+      for(int i=0;i<n;i++)
+      {
+          x[i]=0;
+          for (int j=0;j<n;j++)
+          {
+            x[i]+=sqmatrix[i][j]*y[j];
+          }
+          temp += x[i]*x[i];
+      }
+      k = sqrt(temp);
+      for(int i=0;i<n;i++)
+      {
+        x[i]=x[i]/k;
+      }
+    }while(fabs(k-l)>0.00001);
+    if((x[0]<0 && y[0]>0) || (x[0]>0 && y[0]<0))
     {
       k = -k;
     }
-    eigen_values.push_back(k);
     eigen_vectors.push_back(x);
+    eigen_values.push_back(k);
   }
 }

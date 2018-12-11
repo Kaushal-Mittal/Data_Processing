@@ -19,7 +19,7 @@ task4::task4(){}
 task4::~task4(){}
 ////////////////////////////////////////////////////////////////////////////////////////
 bool func(pair<int, double> p1, pair<int, double> p2){ // Custom Comparator to sort variances
-    return p1.second < p2.second ;
+    return p1.second > p2.second ;
 }
 ////////////////////////////////////////////////////////////////////////////////////////
 double  task4::generate_covariance(vector<double> v1, vector<double> v2){
